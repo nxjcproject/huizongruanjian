@@ -8,6 +8,7 @@ using SqlServerDataAdapter;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -70,21 +71,39 @@ namespace Balance.Model
                 //获取水泥产量
                 DataTable cementTable = DailyMaterialChangeSummation.GetMaterialChange();
                 electricity.Merge(cementTable);
-                int w = dataFactory.Save("tz_Balance", tzBalance);
-                int n=dataFactory.Save("balance_Energy", electricity);
-                if (w == -1)
+                //将数据保存到tz_balance和balance_Energy
+                using (SqlConnection conn = new SqlConnection(ConnectionStringFactory.NXJCConnectionString))
                 {
-                    StreamWriter sw = File.AppendText(singleBasicData.Path);
-                    sw.WriteLine("Error:" + DateTime.Now.ToString() + "tz_Balance表数据写入失败！");
-                    sw.Flush();
-                    sw.Close();
-                }
-                if (n == -1)
-                {
-                    StreamWriter sw = File.AppendText(singleBasicData.Path);
-                    sw.WriteLine("Error:" + DateTime.Now.ToString() + "balance_Energy表数据写入失败！");
-                    sw.Flush();
-                    sw.Close();
+                    conn.Open();
+                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.CheckConstraints, transaction))
+                        {
+                            bulkCopy.BatchSize = 10;
+                            bulkCopy.BulkCopyTimeout = 60;
+                            try
+                            {
+                                bulkCopy.DestinationTableName = "tz_Balance";
+                                bulkCopy.WriteToServer(tzBalance);
+
+                                bulkCopy.DestinationTableName = "balance_Energy";
+                                bulkCopy.WriteToServer(electricity);
+                                transaction.Commit();
+                            }
+                            catch (Exception ex)
+                            {
+                                transaction.Rollback();
+                                StreamWriter sw = File.AppendText(singleBasicData.Path);
+                                sw.WriteLine("Error:" + DateTime.Now.ToString() + "保存数据失败！");
+                                sw.Flush();
+                                sw.Close();
+                            }
+                            finally
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
                 }
             }
         }
