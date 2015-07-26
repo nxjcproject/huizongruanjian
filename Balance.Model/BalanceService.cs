@@ -18,25 +18,51 @@ namespace Balance.Model
 {
     public class BalanceService
     {
+
+        private static string connectionString = ConnectionStringFactory.NXJCConnectionString;
+        private static ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
         public static void SetBalance(DateTime date)
         {
+
+
             string[] factorys = ConfigService.GetConfig("FactoryID").Split(',');
             foreach (string factory in factorys)
             {
-                string connectionString = ConnectionStringFactory.NXJCConnectionString;
-                ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
-                SingleBasicData singleBasicData = SingleBasicData.Creat();
-                singleBasicData.Init(factory, date.ToString("yyyy-MM-dd"));
-                SingleTimeService singleTimeService = SingleTimeService.Creat();
-                //每天都重新初始化
-                singleTimeService.Init(dataFactory);
-                DataTable tzBalance = TzBalanceService.GetDailyTzBalance();
-                DataTable electricity = DailyElectricityQuantityService.GetElectricQuantity();
-                DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight();
-                //将电量产量消耗量合成一表
-                electricity.Merge(materialWeight);
+                //检查四天之前的数据是否保存，没有则保存
+                for (DateTime cursorDate = date.AddDays(-4); cursorDate <= date; cursorDate=cursorDate.AddDays(1))
+                {
+                    string mySql = @"select A.TimeStamp,A.OrganizationID
+                                from tz_Balance A 
+                                where A.StaticsCycle='day' and A.OrganizationID=@organizationId and A.TimeStamp=@checkDate";
+                    SqlParameter[] parameters = { new SqlParameter("organizationId", factory),
+                                        new SqlParameter("checkDate",cursorDate)};
+                    DataTable checkTable = dataFactory.Query(mySql, parameters);
+                    if (checkTable.Rows.Count == 0)
+                    {
+                        SaveData(factory, cursorDate);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// 保存数据
+        /// </summary>
+        /// <param name="organizationId">分厂组织机构ID</param>
+        /// <param name="saveDate">保存数据的日期</param>
+        private static void SaveData(string organizationId,DateTime saveDate)
+        {            
+            SingleBasicData singleBasicData = SingleBasicData.Creat();
+            singleBasicData.Init(organizationId, saveDate.ToString("yyyy-MM-dd"));
+            SingleTimeService singleTimeService = SingleTimeService.Creat();
+            //每天都重新初始化
+            singleTimeService.Init(dataFactory);
+            DataTable tzBalance = TzBalanceService.GetDailyTzBalance();
+            DataTable electricity = DailyElectricityQuantityService.GetElectricQuantity();
+            DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight();
+            //将电量产量消耗量合成一表
+            electricity.Merge(materialWeight);
 
-                string sql = @"SELECT A.VariableId,B.OrganizationID,(B.Name+A.VariableName) AS Name,A.ValueType,A.ValueFormula
+            string sql = @"SELECT A.VariableId,B.OrganizationID,(B.Name+A.VariableName) AS Name,A.ValueType,A.ValueFormula
                                     FROM balance_Energy_Template AS A,system_Organization AS B
                                     WHERE 
                                     A.ProductionLineType=B.Type 
@@ -44,64 +70,63 @@ namespace Balance.Model
                                     OR A.ValueType='CoalConsumption')
                                     AND A.Enabled='True'
                                     AND B.OrganizationID like '{0}%'";
-                DataTable template = dataFactory.Query(string.Format(sql, singleBasicData.OrganizationId));
-                string[] columns ={"TotalPeakValleyFlat", "MorePeak", "Peak", "Valley", "MoreValley", "Flat", "First", "Second", "Third", "TotalPeakValleyFlatB", "MorePeakB", 
+            DataTable template = dataFactory.Query(string.Format(sql, singleBasicData.OrganizationId));
+            string[] columns ={"TotalPeakValleyFlat", "MorePeak", "Peak", "Valley", "MoreValley", "Flat", "First", "Second", "Third", "TotalPeakValleyFlatB", "MorePeakB", 
                 "PeakB", "ValleyB", "MoreValleyB", "FlatB", "FirstB", "SecondB", "ThirdB"};
-                DataTable consumptionTemp = EnergyConsumption.EnergyConsumptionCalculate.CalculateByOrganizationId(electricity, template, "ValueFormula", columns);
-                DataTable consumption = singleBasicData.BalanceTable.Clone();
-                foreach (DataRow dr in consumptionTemp.Rows)
+            DataTable consumptionTemp = EnergyConsumption.EnergyConsumptionCalculate.CalculateByOrganizationId(electricity, template, "ValueFormula", columns);
+            DataTable consumption = singleBasicData.BalanceTable.Clone();
+            foreach (DataRow dr in consumptionTemp.Rows)
+            {
+                DataRow row = consumption.NewRow();
+                row["VariableItemId"] = Guid.NewGuid().ToString();
+                foreach (DataColumn item in consumptionTemp.Columns)
                 {
-                    DataRow row = consumption.NewRow();
-                    row["VariableItemId"] = Guid.NewGuid().ToString();
-                    foreach (DataColumn item in consumptionTemp.Columns)
-                    {
-                        string name = item.ColumnName;
-                        if (name == "ValueFormula")
-                            continue;
-                        if (name == "Name")
-                            row["VariableName"] = dr[name];
-                        else
-                            row[name] = dr[name];
-                        row["PublicVariableId"] = row["KeyId"] = singleBasicData.KeyId;
-                    }
-                    consumption.Rows.Add(row);
-                }              
+                    string name = item.ColumnName;
+                    if (name == "ValueFormula")
+                        continue;
+                    if (name == "Name")
+                        row["VariableName"] = dr[name];
+                    else
+                        row[name] = dr[name];
+                    row["PublicVariableId"] = row["KeyId"] = singleBasicData.KeyId;
+                }
+                consumption.Rows.Add(row);
+            }
 
-                electricity.Merge(consumption);
-                //获取水泥产量
-                DataTable cementTable = DailyMaterialChangeSummation.GetMaterialChange();
-                electricity.Merge(cementTable);
-                //将数据保存到tz_balance和balance_Energy
-                using (SqlConnection conn = new SqlConnection(ConnectionStringFactory.NXJCConnectionString))
+            electricity.Merge(consumption);
+            //获取水泥产量
+            DataTable cementTable = DailyMaterialChangeSummation.GetMaterialChange();
+            electricity.Merge(cementTable);
+            //将数据保存到tz_balance和balance_Energy
+            using (SqlConnection conn = new SqlConnection(ConnectionStringFactory.NXJCConnectionString))
+            {
+                conn.Open();
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
-                    conn.Open();
-                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.CheckConstraints, transaction))
                     {
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.CheckConstraints, transaction))
+                        bulkCopy.BatchSize = 10;
+                        bulkCopy.BulkCopyTimeout = 60;
+                        try
                         {
-                            bulkCopy.BatchSize = 10;
-                            bulkCopy.BulkCopyTimeout = 60;
-                            try
-                            {
-                                bulkCopy.DestinationTableName = "tz_Balance";
-                                bulkCopy.WriteToServer(tzBalance);
+                            bulkCopy.DestinationTableName = "tz_Balance";
+                            bulkCopy.WriteToServer(tzBalance);
 
-                                bulkCopy.DestinationTableName = "balance_Energy";
-                                bulkCopy.WriteToServer(electricity);
-                                transaction.Commit();
-                            }
-                            catch (Exception ex)
-                            {
-                                transaction.Rollback();
-                                StreamWriter sw = File.AppendText(singleBasicData.Path);
-                                sw.WriteLine("Error:" + DateTime.Now.ToString() + "保存数据失败！");
-                                sw.Flush();
-                                sw.Close();
-                            }
-                            finally
-                            {
-                                conn.Close();
-                            }
+                            bulkCopy.DestinationTableName = "balance_Energy";
+                            bulkCopy.WriteToServer(electricity);
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            StreamWriter sw = File.AppendText(singleBasicData.Path);
+                            sw.WriteLine("Error:" + DateTime.Now.ToString() + "保存数据失败！");
+                            sw.Flush();
+                            sw.Close();
+                        }
+                        finally
+                        {
+                            conn.Close();
                         }
                     }
                 }
