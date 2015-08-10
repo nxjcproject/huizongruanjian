@@ -35,7 +35,7 @@ namespace Balance.Model
                                 from tz_Balance A 
                                 where A.StaticsCycle='day' and A.OrganizationID=@organizationId and A.TimeStamp=@checkDate";
                     SqlParameter[] parameters = { new SqlParameter("organizationId", factory),
-                                        new SqlParameter("checkDate",cursorDate)};
+                                        new SqlParameter("checkDate",cursorDate.ToString("yyyy-MM-dd"))};
                     DataTable checkTable = dataFactory.Query(mySql, parameters);
                     if (checkTable.Rows.Count == 0)
                     {

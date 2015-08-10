@@ -26,16 +26,17 @@ namespace Balance.Model.ElectricityQuantity
             //singleBasicData.Init("zc_nxjc_byc_byf", "2015-02-12");
             SingleTimeService singleTimeService=SingleTimeService.Creat();
             string mySqlStr = @"SELECT B.VariableId,(A.Name+B.Name) AS Name,A.OrganizationID
-                                    FROM tz_Formula AS A,formula_FormulaDetail AS B
+                                    FROM tz_Formula AS A,formula_FormulaDetail AS B, 
+                                       ( SELECT [M].[OrganizationID] FROM [dbo].[system_Organization] AS [M],[dbo].[system_Organization] AS [N] 
+										      WHERE [M].LevelCode LIKE [N].LevelCode + '%' AND [N].[OrganizationID] = '{0}' 
+                                        ) AS C
                                     WHERE A.KeyID=B.KeyID
-                                    AND A.OrganizationID IN 
-                                    (select OrganizationID from system_Organization where LevelCode Like 
-                                    (select LevelCode from system_Organization where OrganizationID='{0}')+'%')
+                                    AND A.OrganizationID IN (C.OrganizationID)
                                     --AND A.Type=2 
                                     AND A.ENABLE='True' 
                                     AND A.State=0 
                                     AND B.VariableId IS NOT NULL 
-                                    AND LEN(LTRIM(RTRIM(B.VariableId)))<>0
+                                    AND LTRIM(RTRIM(B.VariableId))<> ''
                                     AND B.VariableId<>'null'
                                     ORDER BY B.VariableId,A.OrganizationID";
             DataTable mainDatas = dataFactory.Query(string.Format(mySqlStr, singleBasicData.OrganizationId));
@@ -89,7 +90,7 @@ namespace Balance.Model.ElectricityQuantity
                 sourceP = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion));
             }
-            catch (TimeoutException)
+            catch
             {
                 sourceP = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion));
@@ -103,7 +104,7 @@ namespace Balance.Model.ElectricityQuantity
                     sourceMP = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.MorePeakTimeCriterion,
                         singleBasicData.AmmeterName, singleTimeService.MorePeakTimeCriterion));
                 }
-                catch (TimeoutException)
+                catch 
                 {
                     sourceMP = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.MorePeakTimeCriterion,
                         singleBasicData.AmmeterName, singleTimeService.MorePeakTimeCriterion));
@@ -116,7 +117,7 @@ namespace Balance.Model.ElectricityQuantity
                 sourceV = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.ValleyTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.ValleyTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 sourceV = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.ValleyTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.ValleyTimeCriterion));
@@ -129,7 +130,7 @@ namespace Balance.Model.ElectricityQuantity
                     sourceMV = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.MoreValleyTimeCriterion,
                         singleBasicData.AmmeterName, singleTimeService.MoreValleyTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 sourceMV = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.MoreValleyTimeCriterion,
                         singleBasicData.AmmeterName, singleTimeService.MoreValleyTimeCriterion));
@@ -141,7 +142,7 @@ namespace Balance.Model.ElectricityQuantity
                 sourceF = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.FlatTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.FlatTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 sourceF = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.FlatTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.FlatTimeCriterion));
@@ -153,7 +154,7 @@ namespace Balance.Model.ElectricityQuantity
                 first = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.FirstTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.FirstTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 first = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.FirstTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.FirstTimeCriterion));
@@ -165,7 +166,7 @@ namespace Balance.Model.ElectricityQuantity
                 second = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.SecondTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.SecondTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 second = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.SecondTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.SecondTimeCriterion));
@@ -177,7 +178,7 @@ namespace Balance.Model.ElectricityQuantity
                 third = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.ThirdTimeCriterion,
                 singleBasicData.AmmeterName, singleTimeService.ThirdTimeCriterion));
             }
-            catch (TimeoutException)
+            catch 
             {
                 third = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.ThirdTimeCriterion,
                 singleBasicData.AmmeterName, singleTimeService.ThirdTimeCriterion));
