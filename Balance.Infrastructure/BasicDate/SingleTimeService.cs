@@ -251,11 +251,13 @@ namespace Balance.Infrastructure.BasicDate
                 string endTime;
                 if ("24:00" == dr["EndTime"].ToString().Trim())
                 {
-                    endTime = "23:59:59";
+                    DateTime time= DateTime.Parse(date + " 00:00:00");
+                    endTime= time.AddDays(1).ToString();
+                    //endTime = "23:59:59";
                 }
                 else
                 {
-                    endTime = dr["EndTime"].ToString().Trim() + ":00";
+                    endTime =date+" "+ dr["EndTime"].ToString().Trim() + ":00";
                 }
                 timeBuilder.Append("vDate>=");
                 //timeBuilder.Append("#");
@@ -265,10 +267,10 @@ namespace Balance.Infrastructure.BasicDate
                 //timeBuilder.Append("#");
                 timeBuilder.Append("'");
                 timeBuilder.Append(" AND ");
-                timeBuilder.Append("vDate<=");
+                timeBuilder.Append("vDate<");
                 //timeBuilder.Append("#");
                 timeBuilder.Append("'");
-                timeBuilder.Append(date + " ");
+                //timeBuilder.Append(date + " ");
                 timeBuilder.Append(endTime);
                 //timeBuilder.Append("#");
                 timeBuilder.Append("'");
