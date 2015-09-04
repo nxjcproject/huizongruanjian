@@ -25,7 +25,6 @@ namespace Balance.Model.MaterialWeight
                             WHERE A.KeyID=B.KeyID AND
                             A.OrganizationID=C.OrganizationID AND
                             A.Enable='True' AND
-                            A.Type=2 AND
                             A.State=0 AND
                             C.LevelCode LIke (select LevelCode from system_Organization where OrganizationID=@organizationId)+'%'";
             SqlParameter parameter = new SqlParameter("organizationId", singleBasicData.OrganizationId);

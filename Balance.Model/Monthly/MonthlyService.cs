@@ -37,6 +37,7 @@ namespace Balance.Model.Monthly
 	                            WHERE A.BalanceId=B.KeyId
 	                            AND B.ValueType<>'ElectricityConsumption'
 	                            AND (A.TimeStamp>=@monthStart AND A.TimeStamp<@monthEnd)
+                                AND A.organizationid like '{0}%'
 	                            GROUP BY VariableId,B.OrganizationID,B.ValueType 
 	                            )as g                   /*主表没有名字，用辅表来填充名字*/
                         left join
@@ -60,7 +61,7 @@ namespace Balance.Model.Monthly
             int monthDay = DateTime.DaysInMonth(date.Year, date.Month);
             int statisticalDay = Int16.Parse(ConfigService.GetConfig("StatisticalDay"));
             SqlParameter[] parameters = { new SqlParameter("monthStart", date.AddMonths(-1).ToString("yyyy-MM") + "-" + statisticalDay.ToString("D2")), new SqlParameter("monthEnd", date.ToString("yyyy-MM") + "-" + statisticalDay.ToString("D2")) };
-            DataTable source = dataFactory.Query(sql, parameters);
+            DataTable source = dataFactory.Query(string.Format(sql,singleBasicData.OrganizationId), parameters);
             //将数据放到result表中（result表结构和balance_Energy表的结构一致）
             foreach (DataRow dr in source.Rows)
             {

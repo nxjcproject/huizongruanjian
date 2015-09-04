@@ -38,6 +38,7 @@ namespace Balance.Model.ElectricityQuantity
                                     AND B.VariableId IS NOT NULL 
                                     AND LTRIM(RTRIM(B.VariableId))<> ''
                                     AND B.VariableId<>'null'
+                                    AND B.SaveToHistory='TRUE'
                                     ORDER BY B.VariableId,A.OrganizationID";
             DataTable mainDatas = dataFactory.Query(string.Format(mySqlStr, singleBasicData.OrganizationId));
             string sqlStr = @"SELECT A.VariableId AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue

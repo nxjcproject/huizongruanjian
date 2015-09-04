@@ -34,7 +34,9 @@ namespace BalanceForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+#if !DEBUG
             RunWhenStartUp();
+#endif
             string m_config = ConfigService.GetConfig("Display");
             //是否显示按钮和文本控件
             if (m_config == "true")
