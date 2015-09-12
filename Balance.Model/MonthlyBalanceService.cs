@@ -38,7 +38,7 @@ namespace Balance.Model
                                     AND (A.ValueType='ElectricityConsumption' 
                                     OR A.ValueType='CoalConsumption')
                                     AND A.Enabled='True'
-                                    AND B.LevelCode like(select LevelCode from system_Organization where OrganizationID='zc_nxjc_byc_byf')+'%'";
+                                    AND B.LevelCode like(select LevelCode from system_Organization where OrganizationID='{0}')+'%'";
                 DataTable template = dataFactory.Query(string.Format(sql, singleBasicData.OrganizationId));
                 string[] columns ={"TotalPeakValleyFlat", "MorePeak", "Peak", "Valley", "MoreValley", "Flat", "First", "Second", "Third", "TotalPeakValleyFlatB", "MorePeakB", 
                 "PeakB", "ValleyB", "MoreValleyB", "FlatB", "FirstB", "SecondB", "ThirdB"};

@@ -36,6 +36,7 @@ namespace Balance.Model.Monthly
 	                            FROM tz_Balance AS A,balance_Energy AS B
 	                            WHERE A.BalanceId=B.KeyId
 	                            AND B.ValueType<>'ElectricityConsumption'
+                                AND B.ValueType<>'CoalConsumption'
 	                            AND (A.TimeStamp>=@monthStart AND A.TimeStamp<@monthEnd)
                                 AND A.organizationid like '{0}%'
 	                            GROUP BY VariableId,B.OrganizationID,B.ValueType 
