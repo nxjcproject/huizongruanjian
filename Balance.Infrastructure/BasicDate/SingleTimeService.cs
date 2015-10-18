@@ -221,13 +221,13 @@ namespace Balance.Infrastructure.BasicDate
                 switch (item)
                 {
                     case "甲班":
-                        firstTimeCriterion = ConvertToSqlStr(rows, date);
+                        firstTimeCriterion = ConvertToSqlStr(rows, date,"甲班");
                         break;
                     case "乙班":
-                        secondTimeCriterion = ConvertToSqlStr(rows, date);
+                        secondTimeCriterion = ConvertToSqlStr(rows, date,"乙班");
                         break;
                     case "丙班":
-                        thirdTimeCriterion = ConvertToSqlStr(rows, date);
+                        thirdTimeCriterion = ConvertToSqlStr(rows, date,"丙班");
                         break;
                     default:
                         throw new Exception("数据库中甲乙丙班名称填写有误！");
@@ -241,7 +241,7 @@ namespace Balance.Infrastructure.BasicDate
         /// <param name="rows"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        private string ConvertToSqlStr(DataRow[] rows, string date)
+        private string ConvertToSqlStr(DataRow[] rows, string date, string workingTeam="")
         {
             StringBuilder timeBuilder = new StringBuilder();
             int n = rows.Count();
@@ -249,6 +249,7 @@ namespace Balance.Infrastructure.BasicDate
             foreach (DataRow dr in rows)
             {
                 string endTime;
+                string startTime;
                 if ("24:00" == dr["EndTime"].ToString().Trim())
                 {
                     DateTime time= DateTime.Parse(date + " 00:00:00");
@@ -258,12 +259,22 @@ namespace Balance.Infrastructure.BasicDate
                 else
                 {
                     endTime =date+" "+ dr["EndTime"].ToString().Trim() + ":00";
+                    
+                }
+                startTime = date + " " + dr["StartTime"].ToString().Trim() + ":00";
+                if (workingTeam == "甲班" && DateTime.Parse(startTime)>DateTime.Parse(endTime))
+                {
+                    startTime = DateTime.Parse(startTime).AddDays(-1).ToString();
+                }
+                if (workingTeam == "丙班" && DateTime.Parse(startTime) > DateTime.Parse(endTime))
+                {
+                    endTime = DateTime.Parse(endTime).AddDays(1).ToString();
                 }
                 timeBuilder.Append("vDate>=");
                 //timeBuilder.Append("#");
                 timeBuilder.Append("'");
-                timeBuilder.Append(date + " ");
-                timeBuilder.Append(dr["StartTime"].ToString().Trim() + ":00");
+                timeBuilder.Append(startTime);
+                //timeBuilder.Append(dr["StartTime"].ToString().Trim() + ":00");
                 //timeBuilder.Append("#");
                 timeBuilder.Append("'");
                 timeBuilder.Append(" AND ");
