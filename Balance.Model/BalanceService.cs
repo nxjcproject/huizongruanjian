@@ -23,8 +23,6 @@ namespace Balance.Model
         private static ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
         public static void SetBalance(DateTime date)
         {
-
-
             string[] factorys = ConfigService.GetConfig("FactoryID").Split(',');
             foreach (string factory in factorys)
             {
@@ -58,7 +56,9 @@ namespace Balance.Model
             singleTimeService.Init(dataFactory);
             DataTable tzBalance = TzBalanceService.GetDailyTzBalance();
             DataTable electricity = DailyElectricityQuantityService.GetElectricQuantity();
-            DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight();
+            DataTable m_MaterialWeightS = DailyMaterialWeight.GetDailyMaterialWeightS();
+            DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight(m_MaterialWeightS);
+            DataTable m_m_MaterialWeightSV = DailyMaterialWeight.GetMaterialWeightSV(m_MaterialWeightS, singleBasicData.KeyId, singleBasicData.OrganizationId);    //横表变纵表
             //将电量产量消耗量合成一表
             electricity.Merge(materialWeight);
 

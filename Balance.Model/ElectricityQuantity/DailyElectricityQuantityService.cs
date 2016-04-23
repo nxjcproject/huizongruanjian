@@ -21,26 +21,13 @@ namespace Balance.Model.ElectricityQuantity
         {
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
+            //Config_SqlServerDataFactory.CommandTimeout = 120;
+            //int bbb = dataFactory.GetCommandTimeout();
             DataTable result = new DataTable();
             SingleBasicData singleBasicData = SingleBasicData.Creat();
             //singleBasicData.Init("zc_nxjc_byc_byf", "2015-02-12");
             SingleTimeService singleTimeService=SingleTimeService.Creat();
-            string mySqlStr = @"SELECT B.VariableId,(A.Name+B.Name) AS Name,A.OrganizationID
-                                    FROM tz_Formula AS A,formula_FormulaDetail AS B, 
-                                       ( SELECT [M].[OrganizationID] FROM [dbo].[system_Organization] AS [M],[dbo].[system_Organization] AS [N] 
-										      WHERE [M].LevelCode LIKE [N].LevelCode + '%' AND [N].[OrganizationID] = '{0}' 
-                                        ) AS C
-                                    WHERE A.KeyID=B.KeyID
-                                    AND A.OrganizationID IN (C.OrganizationID)
-                                    --AND A.Type=2 
-                                    AND A.ENABLE='True' 
-                                    AND A.State=0 
-                                    AND B.VariableId IS NOT NULL 
-                                    AND LTRIM(RTRIM(B.VariableId))<> ''
-                                    AND B.VariableId<>'null'
-                                    AND B.SaveToHistory='TRUE'
-                                    ORDER BY B.VariableId,A.OrganizationID";
-            DataTable mainDatas = dataFactory.Query(string.Format(mySqlStr, singleBasicData.OrganizationId));
+            DataTable mainDatas = GetMainDatas(singleBasicData.OrganizationId, dataFactory);
             string sqlStr = @"SELECT A.VariableId AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
                                 FROM [{0}].[dbo].HistoryFormulaValue AS A
                                 WHERE 
@@ -54,7 +41,7 @@ namespace Balance.Model.ElectricityQuantity
                                 AND
                                 ({1})
                                 GROUP BY A.VariableId,A.OrganizationID
-                            UNION
+                            UNION ALL
                             SELECT A.VariableId AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
                                 FROM [{2}].[dbo].HistoryMainMachineFormulaValue AS A
                                 WHERE 
@@ -67,9 +54,7 @@ namespace Balance.Model.ElectricityQuantity
                                 A.VariableId<>'null' 
                                 AND
                                 ({3})
-                                GROUP BY A.VariableId,A.OrganizationID
-                            ORDER BY A.VariableId,A.OrganizationID
-";
+                                GROUP BY A.VariableId,A.OrganizationID";
             string[] array = {singleTimeService.PeakTimeCriterion,singleTimeService.MorePeakTimeCriterion,
                                  singleTimeService.ValleyTimeCriterion,singleTimeService.MoreValleyTimeCriterion,singleTimeService.FlatTimeCriterion };
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -88,6 +73,8 @@ namespace Balance.Model.ElectricityQuantity
             DataTable sourceP =new DataTable();
             try
             {
+                //string mm = string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion,
+                //    singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion);
                 sourceP = dataFactory.Query(string.Format(sqlStr, singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion,
                     singleBasicData.AmmeterName, singleTimeService.PeakTimeCriterion));
             }
@@ -264,6 +251,25 @@ namespace Balance.Model.ElectricityQuantity
                 ShareElectricityQuantity.ShareElectricityQuantityDaily.ToShare(result, singleBasicData.KeyId);
             }
             return result;
+        }
+        private static DataTable GetMainDatas(string myOrganizationId, ISqlServerDataFactory myDataFactory)
+        {
+            string mySqlStr = @"SELECT B.VariableId,(A.Name+B.Name) AS Name,A.OrganizationID
+                                    FROM tz_Formula AS A,formula_FormulaDetail AS B, system_Organization C, system_Organization D
+                                    WHERE C.LevelCode like D.LevelCode + '%'
+									AND D.OrganizationID = '{0}'
+									AND A.KeyID=B.KeyID
+                                    AND A.OrganizationID IN (C.OrganizationID)
+                                    --AND A.Type=2 
+                                    AND A.ENABLE='True' 
+                                    AND A.State=0 
+                                    AND B.VariableId IS NOT NULL 
+                                    AND LTRIM(RTRIM(B.VariableId))<> ''
+                                    AND B.VariableId<>'null'
+                                    AND B.SaveToHistory='TRUE'
+                                    ORDER BY B.VariableId,A.OrganizationID";
+            DataTable mainDatas = myDataFactory.Query(string.Format(mySqlStr, myOrganizationId));
+            return mainDatas;
         }
         private static decimal MyToDecimal(object obj)
         {
