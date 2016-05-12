@@ -148,6 +148,135 @@ namespace Balance.Model.MaterialWeight
             SingleTimeService singleTimeserver = SingleTimeService.Creat();
             string connectionString = ConnectionStringFactory.NXJCConnectionString;
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
+            string m_SqlColumns = @"SELECT * FROM [{0}].[dbo].[HistoryDCSIncrement] WHERE vDate <> vDate";
+            try
+            {
+                DataTable m_ColumnsTable = dataFactory.Query(string.Format(m_SqlColumns, singleBasicData.AmmeterName));
+                if (m_ColumnsTable != null)
+                {
+                    string m_Sql = "";
+                    string m_Columns = "";
+                    for (int i = 1; i < m_ColumnsTable.Columns.Count; i++)
+                    {
+                        m_Columns = m_Columns + string.Format(", sum({0}) as {0}", m_ColumnsTable.Columns[i].ColumnName);
+                    }
+                    string m_SqlTemplate = @"SELECT '{3}' as Id {0} FROM [{1}].[dbo].[HistoryDCSIncrement] WHERE {2}";
+
+                    if ("1=0" != singleTimeserver.PeakTimeCriterion)//峰期
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.PeakTimeCriterion, "Peak");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.PeakTimeCriterion, "Peak");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.MorePeakTimeCriterion)//尖峰期
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.MorePeakTimeCriterion, "MorePeak");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.MorePeakTimeCriterion, "MorePeak");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.ValleyTimeCriterion)//谷期
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.ValleyTimeCriterion, "Valley");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.ValleyTimeCriterion, "Valley");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.MoreValleyTimeCriterion)//深谷期
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.MoreValleyTimeCriterion, "MoreValley");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.MoreValleyTimeCriterion, "MoreValley");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.FlatTimeCriterion)//平期
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.FlatTimeCriterion, "Flat");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.FlatTimeCriterion, "Flat");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.FirstTimeCriterion)//甲班
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.FirstTimeCriterion, "First");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.FirstTimeCriterion, "First");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.SecondTimeCriterion)//乙班
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.SecondTimeCriterion, "Second");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.SecondTimeCriterion, "Second");
+                        }
+                    }
+                    if ("1=0" != singleTimeserver.ThirdTimeCriterion)//丙班
+                    {
+                        if (m_Sql == "")
+                        {
+                            m_Sql = string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.ThirdTimeCriterion, "Third");
+                        }
+                        else
+                        {
+                            m_Sql = m_Sql + " union all " + string.Format(m_SqlTemplate, m_Columns, singleBasicData.AmmeterName, singleTimeserver.ThirdTimeCriterion, "Third");
+                        }
+                    }
+                    if (m_Sql != "")
+                    {
+                        DataTable MaterialWeightTable = dataFactory.Query(m_Sql);
+                        return MaterialWeightTable;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        public static DataTable GetDailyMaterialWeight(DataTable myMaterialWeightS)
+        {
+            SingleBasicData singleBasicData = SingleBasicData.Creat();
+            SingleTimeService singleTimeserver = SingleTimeService.Creat();
+            string connectionString = ConnectionStringFactory.NXJCConnectionString;
+            ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
             DataTable result = singleBasicData.BalanceTable.Clone();
             string sql = @"SELECT A.OrganizationID,B.VariableId,(A.Name+B.Name) AS Name,B.TagTableName,B.Formula
                             FROM tz_Material AS A,material_MaterialDetail AS B,system_Organization AS C, system_Organization AS D
@@ -284,6 +413,11 @@ namespace Balance.Model.MaterialWeight
                         row["Third"] = 0;
                     }
                     ////////////////////////////////////
+                if (m_IsMultiColumn == true)
+                {
+                    myMaterialWeightS.Columns.Remove(m_ColumnName);
+                }
+                ////////////////////////////////////
                     //**************
                     //string[] arrayFields = { "TotalPeakValleyFlat", "MorePeak", "Peak", "Valley", "MoreValley", "Flat", "First", "Second", "Third" };
                     foreach (string field in arrayFields)
@@ -326,6 +460,39 @@ namespace Balance.Model.MaterialWeight
             {
                 return Convert.ToDecimal(obj);
             }
+        }
+        public static DataTable GetMaterialWeightSV(DataTable myMaterialWeightS, string myKeyId, string myOrganizationId)
+        {
+            DataTable m_MaterialWeightSVTable = new DataTable();
+            //m_MaterialWeightSVTable.Columns.Add("");
+//            VariableItemId
+//VariableId
+//VariableName
+//PublicVariableId
+//KeyId
+//OrganizationID
+//VariableType
+//ValueType
+//TotalPeakValleyFlat
+//MorePeak
+//Peak
+//Valley
+//MoreValley
+//Flat
+//First
+//Second
+//Third
+//TotalPeakValleyFlatB
+//MorePeakB
+//PeakB
+//ValleyB
+//MoreValleyB
+//FlatB
+//FirstB
+//SecondB
+//ThirdB
+
+            return m_MaterialWeightSVTable;
         }
         public static DataTable GetMaterialWeightSV(DataTable myMaterialWeightS, string myKeyId, string myOrganizationId)
         {
