@@ -23,13 +23,11 @@ namespace Balance.Model
         private static ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
         public static void SetBalance(DateTime date)
         {
-
-
             string[] factorys = ConfigService.GetConfig("FactoryID").Split(',');
             foreach (string factory in factorys)
             {
                 //检查四天之前的数据是否保存，没有则保存
-                for (DateTime cursorDate = date.AddDays(-4); cursorDate <= date; cursorDate=cursorDate.AddDays(1))
+                for (DateTime cursorDate = date.AddDays(-4); cursorDate <= date; cursorDate = cursorDate.AddDays(1))
                 {
                     string mySql = @"select A.TimeStamp,A.OrganizationID
                                 from tz_Balance A 
@@ -49,8 +47,8 @@ namespace Balance.Model
         /// </summary>
         /// <param name="organizationId">分厂组织机构ID</param>
         /// <param name="saveDate">保存数据的日期</param>
-        private static void SaveData(string organizationId,DateTime saveDate)
-        {            
+        private static void SaveData(string organizationId, DateTime saveDate)
+        {
             SingleBasicData singleBasicData = SingleBasicData.Creat();
             singleBasicData.Init(organizationId, saveDate.ToString("yyyy-MM-dd"));
             SingleTimeService singleTimeService = SingleTimeService.Creat();
@@ -58,9 +56,14 @@ namespace Balance.Model
             singleTimeService.Init(dataFactory);
             DataTable tzBalance = TzBalanceService.GetDailyTzBalance();
             DataTable electricity = DailyElectricityQuantityService.GetElectricQuantity();
-            DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight();
+            DataTable m_MaterialWeightS = DailyMaterialWeight.GetDailyMaterialWeightS();
+            DataTable m_MaterialWeightProduction = DailyMaterialWeight.GetMaterialWeightProduction(m_MaterialWeightS, organizationId, singleBasicData.KeyId);
+            DataTable m_EquipmentOutput = DailyMaterialWeight.GetDailyEquipmentOutput(m_MaterialWeightS);
+            DataTable materialWeight = DailyMaterialWeight.GetDailyMaterialWeight(m_MaterialWeightS);
+            DataTable m_m_MaterialWeightSV = DailyMaterialWeight.GetMaterialWeightSV(m_MaterialWeightS, singleBasicData.KeyId, singleBasicData.OrganizationId);    //横表变纵表
             //将电量产量消耗量合成一表
             electricity.Merge(materialWeight);
+            m_MaterialWeightProduction.Merge(m_EquipmentOutput); 
 
             string sql = @"SELECT A.VariableId,B.OrganizationID,(B.Name+A.VariableName) AS Name,A.ValueType,A.ValueFormula
                                     FROM balance_Energy_Template AS A,system_Organization AS B
@@ -114,6 +117,9 @@ namespace Balance.Model
 
                             bulkCopy.DestinationTableName = "balance_Energy";
                             bulkCopy.WriteToServer(electricity);
+
+                            bulkCopy.DestinationTableName = "balance_Production";
+                            bulkCopy.WriteToServer(m_MaterialWeightProduction);
                             transaction.Commit();
                         }
                         catch (Exception ex)
@@ -132,5 +138,8 @@ namespace Balance.Model
                 }
             }
         }
+
+        
+
     }
 }

@@ -25,6 +25,7 @@ namespace Balance.Infrastructure.BasicDate
         private string monthKeyId;
         private static DataTable balanceTable;
         private static  DataTable tzBalance;
+        private static DataTable balanceProductionTable;
         private static string path;
         //*******************
 
@@ -72,6 +73,10 @@ namespace Balance.Infrastructure.BasicDate
         public DataTable BalanceTable
         {
             get { return balanceTable; }
+        }
+        public DataTable BalanceProductionTable
+        {
+            get { return balanceProductionTable; }
         }
         /// <summary>
         /// tz_Balance表结构
@@ -137,8 +142,10 @@ namespace Balance.Infrastructure.BasicDate
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
             string sqlTz = "SELECT * FROM tz_Balance WHERE 1=0";
             string sqlBalance = "SELECT * FROM balance_Energy WHERE 1=0";
+            string sqlProctionBalance = "SELECT * FROM balance_Production WHERE 1=0";
             tzBalance = dataFactory.Query(sqlTz);
             balanceTable = dataFactory.Query(sqlBalance);
+            balanceProductionTable = dataFactory.Query(sqlProctionBalance);
             
         }
     }

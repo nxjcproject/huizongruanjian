@@ -266,7 +266,7 @@ namespace Balance.Infrastructure.BasicDate
                 {
                     startTime = DateTime.Parse(startTime).AddDays(-1).ToString();
                 }
-                if (workingTeam == "丙班" && DateTime.Parse(startTime) > DateTime.Parse(endTime))
+               if (workingTeam == "丙班" && DateTime.Parse(startTime) > DateTime.Parse(endTime))
                 {
                     endTime = DateTime.Parse(endTime).AddDays(1).ToString();
                 }

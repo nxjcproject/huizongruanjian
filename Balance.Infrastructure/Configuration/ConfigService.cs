@@ -24,5 +24,55 @@ namespace Balance.Infrastructure.Configuration
             }
             return _value;
         }
+        public static string[] FactoryOrganizationId
+        {
+            get
+            {
+                string m_FactoryOrganization = ConfigurationManager.AppSettings["FactoryID"] != null ? ConfigurationManager.AppSettings["FactoryID"].ToString() : "";
+                return m_FactoryOrganization.Split(',');
+            }
+        }
+        public static int UpdateInterval
+        {
+            get
+            {
+                try
+                {
+                    return ConfigurationManager.AppSettings["UpdateInterval"] != null ? Int32.Parse(ConfigurationManager.AppSettings["UpdateInterval"].ToString()) : 1000;
+                }
+                catch
+                {
+                    return 1000;
+                }
+            }
+        }
+        public static int MinQueryInterval
+        {
+            get
+            {
+                try
+                {
+                    return ConfigurationManager.AppSettings["MinQueryInterval"] != null ? Int32.Parse(ConfigurationManager.AppSettings["MinQueryInterval"].ToString()) : 5;
+                }
+                catch
+                {
+                    return 5;
+                }
+            }
+        }
+        public static int DBThreadItemsCount
+        {
+            get
+            {
+                try
+                {
+                    return ConfigurationManager.AppSettings["DBThreadItemsCount"] != null ? Int32.Parse(ConfigurationManager.AppSettings["DBThreadItemsCount"].ToString()) : 5;
+                }
+                catch
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
