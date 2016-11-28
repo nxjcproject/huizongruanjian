@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.101.212/WebService/RealTimeData.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:13409/WebService/RealTimeData.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RealTimeData.wsdl" MetadataType="Wsdl" ID="8bd05bc3-6079-4dd2-b36a-b6c0f489b137" SourceId="1" SourceUrl="http://192.168.101.212/WebService/RealTimeData.asmx?wsdl" />
-    <MetadataFile FileName="RealTimeData.disco" MetadataType="Disco" ID="d6eb279a-2755-4916-aa2c-7c98b93e8156" SourceId="1" SourceUrl="http://192.168.101.212/WebService/RealTimeData.asmx?disco" />
+    <MetadataFile FileName="RealTimeData1.wsdl" MetadataType="Wsdl" ID="10a1cfff-12b0-40e1-86aa-253adf24aeb4" SourceId="1" SourceUrl="http://localhost:13409/WebService/RealTimeData.asmx?wsdl" />
+    <MetadataFile FileName="RealTimeData1.disco" MetadataType="Disco" ID="812ceba3-c78f-4e94-a1e1-349f5af2ab74" SourceId="1" SourceUrl="http://localhost:13409/WebService/RealTimeData.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataCompression">
+      <HintPath>..\..\..\组件\DataCompression\DataCompression\bin\Debug\DataCompression.dll</HintPath>
+    </Reference>
     <Reference Include="SqlServerDataAdapter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\组件\DataAdapter\SqlServerDataAdapter\bin\Debug\SqlServerDataAdapter.dll</HintPath>
@@ -56,11 +59,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReference_LocalSystemStatus\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference_RemoteRealtimeData\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReference_RemoteSystemStatus\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference_SmsSender\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SmsSend\Function_SmsSender.cs" />
+    <Compile Include="SmsSend\Function_SystemSecurity.cs" />
+    <Compile Include="SmsSend\Realtime_SmsSend.cs" />
+    <Compile Include="SystemStatus\Buffer_SystemStatus.cs" />
+    <Compile Include="SystemStatus\Function_CollectionInterfaceAlarm.cs" />
+    <Compile Include="SystemStatus\Function_NetworkAlarm.cs" />
+    <Compile Include="SystemStatus\Function_SaveAndSendAlarm.cs" />
+    <Compile Include="SystemStatus\Function_SoftwareAlarm.cs" />
+    <Compile Include="SystemStatus\Function_TerminalAlarm.cs" />
+    <Compile Include="SystemStatus\Function_UploadSystemStatus.cs" />
+    <Compile Include="SystemStatus\Model_SystemStatus.cs" />
+    <Compile Include="SystemStatus\Realtime_Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -69,30 +99,51 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference_LocalRealtimeData\RealTimeData.wsdl" />
-    <None Include="Service References\ServiceReference_RemoteRealtimeData\RealTimeData.wsdl" />
+    <None Include="Service References\ServiceReference_LocalRealtimeData\Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_LocalRealtimeData\Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_LocalRealtimeData\Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_LocalRealtimeData\RealTimeData1.wsdl" />
+    <None Include="Service References\ServiceReference_LocalSystemStatus\NetworkMonitor.wsdl" />
+    <None Include="Service References\ServiceReference_RemoteSystemStatus\NetworkMonitor.wsdl" />
+    <None Include="Service References\ServiceReference_SmsSender\Balance.Service.ServiceReference_SmsSender.Reply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_SmsSender\Sms.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference_LocalRealtimeData\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference_LocalSystemStatus\" />
     <WCFMetadataStorage Include="Service References\ServiceReference_RemoteRealtimeData\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference_RemoteSystemStatus\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference_SmsSender\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference_RemoteRealtimeData\RealTimeData.disco" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteRealtimeData\Balance.Service.ServiceReference_RemoteRealtimeData.AnalogDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_RemoteRealtimeData\Balance.Service.ServiceReference_RemoteRealtimeData.DigitalDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference_RemoteRealtimeData\Balance.Service.ServiceReference_RemoteRealtimeData.ObjectDataGroup_Serialization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference_RemoteRealtimeData\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference_RemoteRealtimeData\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteRealtimeData\RealTimeData1.wsdl" />
     <None Include="Service References\ServiceReference_RemoteRealtimeData\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReference_LocalRealtimeData\RealTimeData.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference_LocalRealtimeData\configuration91.svcinfo" />
@@ -111,6 +162,54 @@
       <Project>{3da7cc8d-2335-4750-af6d-bc4cfbb56433}</Project>
       <Name>Balance.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_LocalRealtimeData\RealTimeData1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteRealtimeData\RealTimeData1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_SmsSender\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_SmsSender\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_SmsSender\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_LocalSystemStatus\NetworkMonitor.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_LocalSystemStatus\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_LocalSystemStatus\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_LocalSystemStatus\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteSystemStatus\NetworkMonitor.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteSystemStatus\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteSystemStatus\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference_RemoteSystemStatus\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

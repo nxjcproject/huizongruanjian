@@ -31,6 +31,8 @@ namespace BalanceForm
         /// //////////以下写webservice用
         /// </summary>
         private Balance.Service.RealtimeData.SetRealtimeData SetRealtimeDataToWebService;
+        private Balance.Service.SystemStatus.Realtime_Status MonitorSystemStauts;              //监控系统状态
+        private Balance.Service.SmsSend.Realtime_SmsSend SmsSend;                              //发送短信
         private delegate void Delegate_Textbox(TextBox myTextBox, string mytext);
         /////////////////////////////////////////////////////////////
         /// <summary>
@@ -40,6 +42,8 @@ namespace BalanceForm
         {
             InitializeComponent();
             InitialTray();
+            MonitorSystemStauts = new Balance.Service.SystemStatus.Realtime_Status();
+            SmsSend = new Balance.Service.SmsSend.Realtime_SmsSend();
             SetRealtimeDataToWebService = new Balance.Service.RealtimeData.SetRealtimeData();
             SetRealtimeDataToWebService.BufferChangeHandler += new Balance.Service.RealtimeData.SetRealtimeData.EventHandler(OnBufferChange);
         }
@@ -72,6 +76,14 @@ namespace BalanceForm
 
             //////调用Webservice线程
             SetRealtimeDataToWebService.SetDataToWebService();
+
+            ///////调用系统诊断线程/////////
+            MonitorSystemStauts.StartMonitor();
+
+            ///////调用短信发送线程////////
+            SmsSend.StartSmsSend();
+
+
         }
         private void InitialTray()
         {
@@ -286,6 +298,8 @@ namespace BalanceForm
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             SetRealtimeDataToWebService.IsClosing = true;    //释放线程
+            MonitorSystemStauts.IsClosing = true;
+            SmsSend.IsClosing = true;
         }
         private void OnBufferChange(object sender, Balance.Service.RealtimeData.BufferChange e)
         {

@@ -30,6 +30,7 @@ namespace BalanceForm
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                //Application.Run(new TestSms());
                 Application.Run(new FormMain());
             }
         }

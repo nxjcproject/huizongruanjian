@@ -28,33 +28,21 @@ namespace Balance.Model.ElectricityQuantity
             //singleBasicData.Init("zc_nxjc_byc_byf", "2015-02-12");
             SingleTimeService singleTimeService=SingleTimeService.Creat();
             DataTable mainDatas = GetMainDatas(singleBasicData.OrganizationId, dataFactory);
-            string sqlStr = @"SELECT A.VariableId AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
+            string sqlStr = @"SELECT LTRIM(RTRIM(A.VariableId)) AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
                                 FROM [{0}].[dbo].HistoryFormulaValue AS A
                                 WHERE 
-                                LEN(LTRIM(RTRIM(A.VariableId)))<>0  ---LTRIM去掉左边空格，RTRIM去掉右边空格
-                                AND
-                                A.VariableId IS NOT NULL 
-                                AND
-                                A.VariableId<>'' 
-                                AND
-                                A.VariableId<>'null' 
+                                LEN(LTRIM(RTRIM(A.VariableId))) > 0  ---LTRIM去掉左边空格，RTRIM去掉右边空格
                                 AND
                                 ({1})
-                                GROUP BY A.VariableId,A.OrganizationID
+                                GROUP BY LTRIM(RTRIM(A.VariableId)),A.OrganizationID
                             UNION ALL
-                            SELECT A.VariableId AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
+                            SELECT LTRIM(RTRIM(A.VariableId)) AS VariableID,A.OrganizationID,SUM(A.FormulaValue) AS FormulaValue
                                 FROM [{2}].[dbo].HistoryMainMachineFormulaValue AS A
                                 WHERE 
-                                LEN(LTRIM(RTRIM(A.VariableId)))<>0  ---LTRIM去掉左边空格，RTRIM去掉右边空格
-                                AND
-                                A.VariableId IS NOT NULL 
-                                AND
-                                A.VariableId<>'' 
-                                AND
-                                A.VariableId<>'null' 
+                                LEN(LTRIM(RTRIM(A.VariableId))) > 0  ---LTRIM去掉左边空格，RTRIM去掉右边空格
                                 AND
                                 ({3})
-                                GROUP BY A.VariableId,A.OrganizationID";
+                                GROUP BY LTRIM(RTRIM(A.VariableId)),A.OrganizationID";
             string[] array = {singleTimeService.PeakTimeCriterion,singleTimeService.MorePeakTimeCriterion,
                                  singleTimeService.ValleyTimeCriterion,singleTimeService.MoreValleyTimeCriterion,singleTimeService.FlatTimeCriterion };
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -263,9 +251,7 @@ namespace Balance.Model.ElectricityQuantity
                                     --AND A.Type=2 
                                     AND A.ENABLE='True' 
                                     AND A.State=0 
-                                    AND B.VariableId IS NOT NULL 
-                                    AND LTRIM(RTRIM(B.VariableId))<> ''
-                                    AND B.VariableId<>'null'
+                                    AND LEN(LTRIM(RTRIM(B.VariableId))) > 0
                                     AND B.SaveToHistory='TRUE'
                                     ORDER BY B.VariableId,A.OrganizationID";
             DataTable mainDatas = myDataFactory.Query(string.Format(mySqlStr, myOrganizationId));

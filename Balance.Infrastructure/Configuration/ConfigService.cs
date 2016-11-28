@@ -17,12 +17,40 @@ namespace Balance.Infrastructure.Configuration
         public static string GetConfig(string key)
         {
             string _value = string.Empty;
-            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (config.AppSettings.Settings[key] != null)
+            if (ExeAppFileAddress == "")
             {
-                _value = config.AppSettings.Settings[key].Value;
+                System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (config.AppSettings.Settings[key] != null)
+                {
+                    _value = config.AppSettings.Settings[key].Value;
+                }
+            }
+            else
+            {
+                System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(ExeAppFileAddress);
+                if (config.HasFile)
+                {
+                    if (config.AppSettings.Settings[key] != null)
+                    {
+                        _value = config.AppSettings.Settings[key].Value;
+                    }
+                }
             }
             return _value;
+        }
+        public static string ExeAppFileAddress
+        {
+            get
+            {
+                try
+                {
+                    return ConfigurationManager.AppSettings["ExeAppFileAddress"] != null ? ConfigurationManager.AppSettings["ExeAppFileAddress"].ToString() : "";
+                }
+                catch
+                {
+                    return "";
+                }
+            }
         }
         public static string[] FactoryOrganizationId
         {
@@ -71,6 +99,20 @@ namespace Balance.Infrastructure.Configuration
                 catch
                 {
                     return 5;
+                }
+            }
+        }
+        public static string GroupIpAddress
+        {
+            get
+            {
+                try
+                {
+                    return ConfigurationManager.AppSettings["GroupIpAddress"] != null ? ConfigurationManager.AppSettings["GroupIpAddress"].ToString() : "127.0.0.1";
+                }
+                catch
+                {
+                    return "127.0.0.1";
                 }
             }
         }

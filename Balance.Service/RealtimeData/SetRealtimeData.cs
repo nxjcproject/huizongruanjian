@@ -160,97 +160,120 @@ namespace Balance.Service.RealtimeData
         }
         private void UpdateLocalData(object myUpdateParemeters)
         {
-            ServiceReference_LocalRealtimeData.RealTimeDataSoapClient m_LocalRealtimeDataService = new ServiceReference_LocalRealtimeData.RealTimeDataSoapClient();
-
-            int m_DataGroupIndex = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).DataGroupIndex;
-            string m_OrganizationId = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).OrganizationId;
-            Thread.Sleep(2000);
-            while (_IsClosing == false)
+            try
             {
-                LocalDigitalDataGroup m_LocalDigitalDataGroupTemp = _LocalWebServiceBuffer[m_DataGroupIndex].PopDigitalDataGroup();
-                LocalAnalogDataGroup m_LocalAnalogDataGroupTemp = _LocalWebServiceBuffer[m_DataGroupIndex].PopAnalogDataGroup();
-                if (m_LocalDigitalDataGroupTemp != null)
+                ServiceReference_LocalRealtimeData.RealTimeDataSoapClient m_LocalRealtimeDataService = new ServiceReference_LocalRealtimeData.RealTimeDataSoapClient();
+
+                int m_DataGroupIndex = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).DataGroupIndex;
+                string m_OrganizationId = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).OrganizationId;
+                Thread.Sleep(2000);
+                while (_IsClosing == false)
                 {
-                    try
+                    LocalDigitalDataGroup m_LocalDigitalDataGroupTemp = _LocalWebServiceBuffer[m_DataGroupIndex].PopDigitalDataGroup();
+                    LocalAnalogDataGroup m_LocalAnalogDataGroupTemp = _LocalWebServiceBuffer[m_DataGroupIndex].PopAnalogDataGroup();
+
+                    if (m_LocalDigitalDataGroupTemp != null)
                     {
-                        m_LocalRealtimeDataService.SetDigitalData(m_OrganizationId, m_LocalDigitalDataGroupTemp.LocalDigitalTagName, m_LocalDigitalDataGroupTemp.LocalDigitalTagValue, ValidWriteString);
+                        byte[] m_DigitalTagName = DataCompression.Function_DefaultCompressionArray.CompressString(m_LocalDigitalDataGroupTemp.LocalDigitalTagName.ToArray());
+                        byte[] m_DigitalTagValue = DataCompression.Function_DefaultCompressionArray.CompressBoolen(m_LocalDigitalDataGroupTemp.LocalDigitalTagValue.ToArray());
+                        try
+                        {
+                            m_LocalRealtimeDataService.SetDigitalDataCompress(m_OrganizationId, m_DigitalTagName, m_DigitalTagValue, ValidWriteString);
+                        }
+                        catch
+                        {
+                        }
+                        //监控远程Webservice数据缓冲区
+                        int m_Count = 0;
+                        for (int i = 0; i < _LocalWebServiceBuffer.Count; i++)
+                        {
+                            m_Count = m_Count + _LocalWebServiceBuffer[i].DigitalCount;
+                        }
+                        onBufferChange("LocalDigitalData", m_Count);
                     }
-                    catch
+                    if (m_LocalAnalogDataGroupTemp != null)
                     {
+                        byte[] m_AnalogTagName = DataCompression.Function_DefaultCompressionArray.CompressString(m_LocalAnalogDataGroupTemp.LocalAnalogTagName.ToArray());
+                        byte[] m_AnalogTagValue = DataCompression.Function_DefaultCompressionArray.CompressDecimal(m_LocalAnalogDataGroupTemp.LocalAnalogTagValue.ToArray());
+                        try
+                        {
+                            m_LocalRealtimeDataService.SetAnalogDataCompress(m_OrganizationId, m_AnalogTagName, m_AnalogTagValue, ValidWriteString);
+                        }
+                        catch
+                        {
+                        }
+                        //监控远程Webservice数据缓冲区
+                        int m_Count = 0;
+                        for (int i = 0; i < _LocalWebServiceBuffer.Count; i++)
+                        {
+                            m_Count = m_Count + _LocalWebServiceBuffer[i].AnalogCount;
+                        }
+                        onBufferChange("LocalAnalogData", m_Count);
                     }
-                    //监控远程Webservice数据缓冲区
-                    int m_Count = 0;
-                    for (int i = 0; i < _LocalWebServiceBuffer.Count; i++)
-                    {
-                        m_Count = m_Count + _LocalWebServiceBuffer[i].DigitalCount;
-                    }
-                    onBufferChange("LocalDigitalData", m_Count);
+                    Thread.Sleep(MinQueryInterval);
                 }
-                if (m_LocalAnalogDataGroupTemp != null)
-                {
-                    try
-                    {
-                        m_LocalRealtimeDataService.SetAnalogData(m_OrganizationId, m_LocalAnalogDataGroupTemp.LocalAnalogTagName, m_LocalAnalogDataGroupTemp.LocalAnalogTagValue, ValidWriteString);
-                    }
-                    catch
-                    {
-                    }
-                    //监控远程Webservice数据缓冲区
-                    int m_Count = 0;
-                    for (int i = 0; i < _LocalWebServiceBuffer.Count; i++)
-                    {
-                        m_Count = m_Count + _LocalWebServiceBuffer[i].AnalogCount;
-                    }
-                    onBufferChange("LocalAnalogData", m_Count);
-                }
-                Thread.Sleep(MinQueryInterval);
+            }
+            catch
+            {
+
             }
         }
         private void UpdateRemoteData(object myUpdateParemeters)
         {
-            ServiceReference_RemoteRealtimeData.RealTimeDataSoapClient m_RemoteRealtimeDataService = new ServiceReference_RemoteRealtimeData.RealTimeDataSoapClient();
-
-            int m_DataGroupIndex = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).DataGroupIndex;
-            string m_OrganizationId = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).OrganizationId;
-            Thread.Sleep(2000);
-            while (_IsClosing == false)
+            try
             {
-                RemoteDigitalDataGroup m_RemoteDigitalDataGroupTemp = _RemoteWebServiceBuffer[m_DataGroupIndex].PopDigitalDataGroup();
-                RemoteAnalogDataGroup m_RemoteAnalogDataGroupTemp = _RemoteWebServiceBuffer[m_DataGroupIndex].PopAnalogDataGroup();
-                if (m_RemoteDigitalDataGroupTemp != null)
+                ServiceReference_RemoteRealtimeData.RealTimeDataSoapClient m_RemoteRealtimeDataService = new ServiceReference_RemoteRealtimeData.RealTimeDataSoapClient();
+
+                int m_DataGroupIndex = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).DataGroupIndex;
+                string m_OrganizationId = ((Model_UpdateWebServiceThreadParemeters)myUpdateParemeters).OrganizationId;
+                Thread.Sleep(2000);
+                while (_IsClosing == false)
                 {
-                    try
+                    RemoteDigitalDataGroup m_RemoteDigitalDataGroupTemp = _RemoteWebServiceBuffer[m_DataGroupIndex].PopDigitalDataGroup();
+                    RemoteAnalogDataGroup m_RemoteAnalogDataGroupTemp = _RemoteWebServiceBuffer[m_DataGroupIndex].PopAnalogDataGroup();
+                    if (m_RemoteDigitalDataGroupTemp != null)
                     {
-                        m_RemoteRealtimeDataService.SetDigitalData(m_OrganizationId, m_RemoteDigitalDataGroupTemp.RemoteDigitalTagName, m_RemoteDigitalDataGroupTemp.RemoteDigitalTagValue, ValidWriteString);
+                        byte[] m_DigitalTagName = DataCompression.Function_DefaultCompressionArray.CompressString(m_RemoteDigitalDataGroupTemp.RemoteDigitalTagName.ToArray());
+                        byte[] m_DigitalTagValue = DataCompression.Function_DefaultCompressionArray.CompressBoolen(m_RemoteDigitalDataGroupTemp.RemoteDigitalTagValue.ToArray());
+                        try
+                        {
+                            m_RemoteRealtimeDataService.SetDigitalDataCompress(m_OrganizationId, m_DigitalTagName, m_DigitalTagValue, ValidWriteString);
+                        }
+                        catch
+                        {
+                        }
+                        //监控远程Webservice数据缓冲区
+                        int m_Count = 0;
+                        for (int i = 0; i < _RemoteWebServiceBuffer.Count; i++)
+                        {
+                            m_Count = m_Count + _RemoteWebServiceBuffer[i].DigitalCount;
+                        }
+                        onBufferChange("RemoteDigitalData", m_Count);
                     }
-                    catch
+                    if (m_RemoteAnalogDataGroupTemp != null)
                     {
+                        byte[] m_AnalogTagName = DataCompression.Function_DefaultCompressionArray.CompressString(m_RemoteAnalogDataGroupTemp.RemoteAnalogTagName.ToArray());
+                        byte[] m_AnalogTagValue = DataCompression.Function_DefaultCompressionArray.CompressDecimal(m_RemoteAnalogDataGroupTemp.RemoteAnalogTagValue.ToArray());
+                        try
+                        {
+                            m_RemoteRealtimeDataService.SetAnalogDataCompress(m_OrganizationId, m_AnalogTagName, m_AnalogTagValue, ValidWriteString);
+                        }
+                        catch
+                        {
+                        }
+                        int m_Count = 0;
+                        for (int i = 0; i < _RemoteWebServiceBuffer.Count; i++)
+                        {
+                            m_Count = m_Count + _RemoteWebServiceBuffer[i].AnalogCount;
+                        }
+                        onBufferChange("RemoteAnalogData", m_Count);
                     }
-                    //监控远程Webservice数据缓冲区
-                    int m_Count = 0;
-                    for (int i = 0; i < _RemoteWebServiceBuffer.Count; i++)
-                    {
-                        m_Count = m_Count + _RemoteWebServiceBuffer[i].DigitalCount;
-                    }
-                    onBufferChange("RemoteDigitalData", m_Count);
+                    Thread.Sleep(MinQueryInterval);
                 }
-                if (m_RemoteAnalogDataGroupTemp != null)
-                {
-                    try
-                    {
-                        m_RemoteRealtimeDataService.SetAnalogData(m_OrganizationId, m_RemoteAnalogDataGroupTemp.RemoteAnalogTagName, m_RemoteAnalogDataGroupTemp.RemoteAnalogTagValue, ValidWriteString);
-                    }
-                    catch
-                    {
-                    }
-                    int m_Count = 0;
-                    for (int i = 0; i < _RemoteWebServiceBuffer.Count; i++)
-                    {
-                        m_Count = m_Count + _RemoteWebServiceBuffer[i].AnalogCount;
-                    }
-                    onBufferChange("RemoteAnalogData", m_Count);
-                }
-                Thread.Sleep(MinQueryInterval);
+            }
+            catch
+            {
+
             }
         }
 

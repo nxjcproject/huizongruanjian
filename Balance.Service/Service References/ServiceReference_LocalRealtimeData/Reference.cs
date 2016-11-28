@@ -34,6 +34,426 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
     public class ArrayOfBoolean : System.Collections.Generic.List<bool> {
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DigitalDataGroup_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class DigitalDataGroup_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrganizationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataItem_Serialization[] DataSetField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string OrganizationId {
+            get {
+                return this.OrganizationIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrganizationIdField, value) != true)) {
+                    this.OrganizationIdField = value;
+                    this.RaisePropertyChanged("OrganizationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataItem_Serialization[] DataSet {
+            get {
+                return this.DataSetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataSetField, value) != true)) {
+                    this.DataSetField = value;
+                    this.RaisePropertyChanged("DataSet");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DigitalDataItem_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class DigitalDataItem_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        private bool ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public bool Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnalogDataGroup_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class AnalogDataGroup_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrganizationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataItem_Serialization[] DataSetField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string OrganizationId {
+            get {
+                return this.OrganizationIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrganizationIdField, value) != true)) {
+                    this.OrganizationIdField = value;
+                    this.RaisePropertyChanged("OrganizationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataItem_Serialization[] DataSet {
+            get {
+                return this.DataSetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataSetField, value) != true)) {
+                    this.DataSetField = value;
+                    this.RaisePropertyChanged("DataSet");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnalogDataItem_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class AnalogDataItem_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        private decimal ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public decimal Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ObjectDataGroup_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class ObjectDataGroup_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrganizationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataItem_Serialization[] DataSetField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string OrganizationId {
+            get {
+                return this.OrganizationIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrganizationIdField, value) != true)) {
+                    this.OrganizationIdField = value;
+                    this.RaisePropertyChanged("OrganizationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataItem_Serialization[] DataSet {
+            get {
+                return this.DataSetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataSetField, value) != true)) {
+                    this.DataSetField = value;
+                    this.RaisePropertyChanged("DataSet");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ObjectDataItem_Serialization", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfDecimal))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfBoolean))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataGroup_Serialization))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataItem_Serialization[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataItem_Serialization))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataGroup_Serialization))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataItem_Serialization[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataItem_Serialization))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataGroup_Serialization))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataItem_Serialization[]))]
+    public partial class ObjectDataItem_Serialization : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public object Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference_LocalRealtimeData.RealTimeDataSoap")]
     public interface RealTimeDataSoap {
@@ -47,8 +467,36 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
         Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataResponse SetAnalogData(Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataRequest request);
         
         // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SetAnalogDataCompress", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressResponse SetAnalogDataCompress(Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SetDigitalData", ReplyAction="*")]
         Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataResponse SetDigitalData(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SetDigitalDataCompress", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressResponse SetDigitalDataCompress(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetDigitalDataA", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataAResponse GetDigitalDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAnalogDataA", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataAResponse GetAnalogDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetObjectDataA", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataAResponse GetObjectDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetDigitalDataS", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSResponse GetDigitalDataS(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequest request);
+        
+        // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 myOrganizationId 以后生成的消息协定未标记为 nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAnalogDataS", ReplyAction="*")]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSResponse GetAnalogDataS(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -189,6 +637,79 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SetAnalogDataCompressRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetAnalogDataCompress", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequestBody Body;
+        
+        public SetAnalogDataCompressRequest() {
+        }
+        
+        public SetAnalogDataCompressRequest(Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SetAnalogDataCompressRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public byte[] myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public byte[] myTagValue;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string myKeyword;
+        
+        public SetAnalogDataCompressRequestBody() {
+        }
+        
+        public SetAnalogDataCompressRequestBody(string myOrganizationId, byte[] myTagName, byte[] myTagValue, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myTagValue = myTagValue;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SetAnalogDataCompressResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetAnalogDataCompressResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressResponseBody Body;
+        
+        public SetAnalogDataCompressResponse() {
+        }
+        
+        public SetAnalogDataCompressResponse(Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class SetAnalogDataCompressResponseBody {
+        
+        public SetAnalogDataCompressResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class SetDigitalDataRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="SetDigitalData", Namespace="http://tempuri.org/", Order=0)]
@@ -258,6 +779,459 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SetDigitalDataCompressRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetDigitalDataCompress", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequestBody Body;
+        
+        public SetDigitalDataCompressRequest() {
+        }
+        
+        public SetDigitalDataCompressRequest(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SetDigitalDataCompressRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public byte[] myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public byte[] myTagValue;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string myKeyword;
+        
+        public SetDigitalDataCompressRequestBody() {
+        }
+        
+        public SetDigitalDataCompressRequestBody(string myOrganizationId, byte[] myTagName, byte[] myTagValue, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myTagValue = myTagValue;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SetDigitalDataCompressResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetDigitalDataCompressResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressResponseBody Body;
+        
+        public SetDigitalDataCompressResponse() {
+        }
+        
+        public SetDigitalDataCompressResponse(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class SetDigitalDataCompressResponseBody {
+        
+        public SetDigitalDataCompressResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDigitalDataARequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDigitalDataA", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequestBody Body;
+        
+        public GetDigitalDataARequest() {
+        }
+        
+        public GetDigitalDataARequest(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetDigitalDataARequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string myKeyword;
+        
+        public GetDigitalDataARequestBody() {
+        }
+        
+        public GetDigitalDataARequestBody(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDigitalDataAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDigitalDataAResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataAResponseBody Body;
+        
+        public GetDigitalDataAResponse() {
+        }
+        
+        public GetDigitalDataAResponse(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataAResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetDigitalDataAResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataGroup_Serialization GetDigitalDataAResult;
+        
+        public GetDigitalDataAResponseBody() {
+        }
+        
+        public GetDigitalDataAResponseBody(Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataGroup_Serialization GetDigitalDataAResult) {
+            this.GetDigitalDataAResult = GetDigitalDataAResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAnalogDataARequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAnalogDataA", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequestBody Body;
+        
+        public GetAnalogDataARequest() {
+        }
+        
+        public GetAnalogDataARequest(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAnalogDataARequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string myKeyword;
+        
+        public GetAnalogDataARequestBody() {
+        }
+        
+        public GetAnalogDataARequestBody(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAnalogDataAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAnalogDataAResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataAResponseBody Body;
+        
+        public GetAnalogDataAResponse() {
+        }
+        
+        public GetAnalogDataAResponse(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataAResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAnalogDataAResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataGroup_Serialization GetAnalogDataAResult;
+        
+        public GetAnalogDataAResponseBody() {
+        }
+        
+        public GetAnalogDataAResponseBody(Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataGroup_Serialization GetAnalogDataAResult) {
+            this.GetAnalogDataAResult = GetAnalogDataAResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetObjectDataARequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetObjectDataA", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequestBody Body;
+        
+        public GetObjectDataARequest() {
+        }
+        
+        public GetObjectDataARequest(Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetObjectDataARequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string myKeyword;
+        
+        public GetObjectDataARequestBody() {
+        }
+        
+        public GetObjectDataARequestBody(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetObjectDataAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetObjectDataAResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataAResponseBody Body;
+        
+        public GetObjectDataAResponse() {
+        }
+        
+        public GetObjectDataAResponse(Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataAResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetObjectDataAResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataGroup_Serialization GetObjectDataAResult;
+        
+        public GetObjectDataAResponseBody() {
+        }
+        
+        public GetObjectDataAResponseBody(Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataGroup_Serialization GetObjectDataAResult) {
+            this.GetObjectDataAResult = GetObjectDataAResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDigitalDataSRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDigitalDataS", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequestBody Body;
+        
+        public GetDigitalDataSRequest() {
+        }
+        
+        public GetDigitalDataSRequest(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetDigitalDataSRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string myKeyword;
+        
+        public GetDigitalDataSRequestBody() {
+        }
+        
+        public GetDigitalDataSRequestBody(string myOrganizationId, string myTagName, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDigitalDataSResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDigitalDataSResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSResponseBody Body;
+        
+        public GetDigitalDataSResponse() {
+        }
+        
+        public GetDigitalDataSResponse(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetDigitalDataSResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetDigitalDataSResult;
+        
+        public GetDigitalDataSResponseBody() {
+        }
+        
+        public GetDigitalDataSResponseBody(string GetDigitalDataSResult) {
+            this.GetDigitalDataSResult = GetDigitalDataSResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAnalogDataSRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAnalogDataS", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequestBody Body;
+        
+        public GetAnalogDataSRequest() {
+        }
+        
+        public GetAnalogDataSRequest(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAnalogDataSRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string myOrganizationId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string myTagName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string myKeyword;
+        
+        public GetAnalogDataSRequestBody() {
+        }
+        
+        public GetAnalogDataSRequestBody(string myOrganizationId, string myTagName, string myKeyword) {
+            this.myOrganizationId = myOrganizationId;
+            this.myTagName = myTagName;
+            this.myKeyword = myKeyword;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAnalogDataSResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAnalogDataSResponse", Namespace="http://tempuri.org/", Order=0)]
+        public Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSResponseBody Body;
+        
+        public GetAnalogDataSResponse() {
+        }
+        
+        public GetAnalogDataSResponse(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAnalogDataSResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetAnalogDataSResult;
+        
+        public GetAnalogDataSResponseBody() {
+        }
+        
+        public GetAnalogDataSResponseBody(string GetAnalogDataSResult) {
+            this.GetAnalogDataSResult = GetAnalogDataSResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface RealTimeDataSoapChannel : Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap, System.ServiceModel.IClientChannel {
     }
@@ -313,6 +1287,21 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.SetAnalogDataCompress(Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequest request) {
+            return base.Channel.SetAnalogDataCompress(request);
+        }
+        
+        public void SetAnalogDataCompress(string myOrganizationId, byte[] myTagName, byte[] myTagValue, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressRequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myTagValue = myTagValue;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.SetAnalogDataCompressResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).SetAnalogDataCompress(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.SetDigitalData(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataRequest request) {
             return base.Channel.SetDigitalData(request);
         }
@@ -325,6 +1314,96 @@ namespace Balance.Service.ServiceReference_LocalRealtimeData {
             inValue.Body.myTagValue = myTagValue;
             inValue.Body.myKeyword = myKeyword;
             Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).SetDigitalData(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.SetDigitalDataCompress(Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequest request) {
+            return base.Channel.SetDigitalDataCompress(request);
+        }
+        
+        public void SetDigitalDataCompress(string myOrganizationId, byte[] myTagName, byte[] myTagValue, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressRequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myTagValue = myTagValue;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.SetDigitalDataCompressResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).SetDigitalDataCompress(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataAResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.GetDigitalDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequest request) {
+            return base.Channel.GetDigitalDataA(request);
+        }
+        
+        public Balance.Service.ServiceReference_LocalRealtimeData.DigitalDataGroup_Serialization GetDigitalDataA(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataARequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataAResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).GetDigitalDataA(inValue);
+            return retVal.Body.GetDigitalDataAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataAResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.GetAnalogDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequest request) {
+            return base.Channel.GetAnalogDataA(request);
+        }
+        
+        public Balance.Service.ServiceReference_LocalRealtimeData.AnalogDataGroup_Serialization GetAnalogDataA(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataARequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataAResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).GetAnalogDataA(inValue);
+            return retVal.Body.GetAnalogDataAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataAResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.GetObjectDataA(Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequest request) {
+            return base.Channel.GetObjectDataA(request);
+        }
+        
+        public Balance.Service.ServiceReference_LocalRealtimeData.ObjectDataGroup_Serialization GetObjectDataA(string myOrganizationId, Balance.Service.ServiceReference_LocalRealtimeData.ArrayOfString myTagName, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataARequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.GetObjectDataAResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).GetObjectDataA(inValue);
+            return retVal.Body.GetObjectDataAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.GetDigitalDataS(Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequest request) {
+            return base.Channel.GetDigitalDataS(request);
+        }
+        
+        public string GetDigitalDataS(string myOrganizationId, string myTagName, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSRequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.GetDigitalDataSResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).GetDigitalDataS(inValue);
+            return retVal.Body.GetDigitalDataSResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSResponse Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap.GetAnalogDataS(Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequest request) {
+            return base.Channel.GetAnalogDataS(request);
+        }
+        
+        public string GetAnalogDataS(string myOrganizationId, string myTagName, string myKeyword) {
+            Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequest inValue = new Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequest();
+            inValue.Body = new Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSRequestBody();
+            inValue.Body.myOrganizationId = myOrganizationId;
+            inValue.Body.myTagName = myTagName;
+            inValue.Body.myKeyword = myKeyword;
+            Balance.Service.ServiceReference_LocalRealtimeData.GetAnalogDataSResponse retVal = ((Balance.Service.ServiceReference_LocalRealtimeData.RealTimeDataSoap)(this)).GetAnalogDataS(inValue);
+            return retVal.Body.GetAnalogDataSResult;
         }
     }
 }

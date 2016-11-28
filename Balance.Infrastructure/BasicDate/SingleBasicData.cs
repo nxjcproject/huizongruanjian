@@ -125,12 +125,33 @@ namespace Balance.Infrastructure.BasicDate
             this.keyId = Guid.NewGuid().ToString();
         }
         /// <summary>
+        ///设置属性值
+        /// </summary>
+        /// <param name="organizationId">分厂级别的组织机构ID</param>
+        /// <param name="date"></param>
+        public void Init(string organizationId, string keyId, string date)
+        {
+            this.organizationId = organizationId;
+            this.date = date;
+            this.ammeterName = ConnectionStringFactory.GetAmmeterDatabaseName(organizationId);
+            this.keyId = keyId;
+        }
+        /// <summary>
         /// 初始化统计月数据时使用到的量
         /// </summary>
         /// <param name="date"></param>
         public void InitMonthlyData(DateTime date)
         {
             monthKeyId = Guid.NewGuid().ToString();
+            monthDate = date;
+        }
+        /// <summary>
+        /// 初始化统计月数据时使用到的量
+        /// </summary>
+        /// <param name="date"></param>
+        public void InitMonthlyData(string keyId, DateTime date)
+        {
+            monthKeyId = keyId;
             monthDate = date;
         }
         /// <summary>

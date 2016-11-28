@@ -63,8 +63,19 @@ namespace Balance.Model.Schedule
             TimeSpan timeSpan = calculateDate - firstworkingDate;
             int spanDay = timeSpan.Days;
             int myLength = ruleArray.Length;
-            string state = ruleArray[spanDay % myLength];
-            return state;
+            if (spanDay >= 0)
+            {
+                string state = ruleArray[spanDay % myLength];
+                return state;
+            }
+            else
+            {
+                //int aa = (-8 % 8);
+                //int bb = (-7 % 8);
+                //int cc = (myLength + spanDay % myLength) % myLength;
+                string state = ruleArray[(myLength + spanDay % myLength) % myLength];
+                return state;
+            }
         }
     }
 }
