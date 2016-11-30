@@ -1,0 +1,4 @@
+Error:2015/7/25 12:00:20,无该组织机构ID对应的数据   在 Balance.Infrastructure.Configuration.ConnectionStringFactory.GetAmmeterDatabaseName(String organizationId) 位置 e:\MyProject\Balance\Balance.Infrastructure\Configuration\ConnectionStringFactory.cs:行号 44
+   在 Balance.Infrastructure.BasicDate.SingleBasicData.Init(String organizationId, String date) 位置 e:\MyProject\Balance\Balance.Infrastructure\BasicDate\SingleBasicData.cs:行号 119
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 e:\MyProject\Balance\Balance.Model\BalanceService.cs:行号 28
+   在 BalanceForm.Form1.button1_Click(Object sender, EventArgs e) 位置 e:\MyProject\Balance\BalanceForm\Form1.cs:行号 142

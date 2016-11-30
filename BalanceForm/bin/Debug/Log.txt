@@ -1,0 +1,117 @@
+Error:2016/4/29 9:19:28,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:21:10,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:24:19,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:25:23,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:27:54,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:36:49,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:40:41,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 9:47:57,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:05:53,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:06:27,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:06:47,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:07:28,不能设置 Expression 属性，因为表达式中存在循环引用。   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 188
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:15:21,未找到列 [S113]。   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataColumn.SetTable(DataTable table)
+   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 189
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:15:46,未找到列 [S113]。   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataColumn.SetTable(DataTable table)
+   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 189
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:17:58,未找到列 [S113]。   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataColumn.SetTable(DataTable table)
+   在 System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   在 System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   在 System.Data.DataColumnCollection.Add(DataColumn column)
+   在 Balance.Model.MaterialWeight.DailyMaterialWeight.GetDailyMaterialWeight(DataTable myMaterialWeightS) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\MaterialWeight\DailyMaterialWeight.cs:行号 192
+   在 Balance.Model.BalanceService.SaveData(String organizationId, DateTime saveDate) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 61
+   在 Balance.Model.BalanceService.SetBalance(DateTime date) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Model\BalanceService.cs:行号 40
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 159
+Error:2016/4/29 10:26:37,该字符串未被识别为有效的 DateTime。   在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 System.DateTime.Parse(String s)
+   在 BalanceForm.FormMain.button1_Click(Object sender, EventArgs e) 位置 c:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\FormMain.cs:行号 158

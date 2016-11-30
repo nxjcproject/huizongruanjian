@@ -1,0 +1,13 @@
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\Balance.Service.dll.config
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\Balance.Service.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\Balance.Service.pdb
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\Balance.Infrastructure.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\SqlServerDataAdapter.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\AutoMapper.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\Balance.Infrastructure.pdb
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\SqlServerDataAdapter.pdb
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\obj\Release\Balance.Service.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\obj\Release\Balance.Service.pdb
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\DataCompression.dll
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\bin\Release\DataCompression.pdb
+C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\Balance.Service\obj\Release\Balance.Service.csprojResolveAssemblyReference.cache
