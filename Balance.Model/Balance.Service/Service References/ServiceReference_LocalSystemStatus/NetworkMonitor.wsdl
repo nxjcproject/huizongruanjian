@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNetworkStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myStatusBuffer" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNetworkStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNetworkStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNetworkStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNetworkStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNetworkStructure">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNetworkStructureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNetworkStructureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetNetworkStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SetNetworkStatus" />
+  </wsdl:message>
+  <wsdl:message name="SetNetworkStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SetNetworkStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNetworkStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNetworkStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkStructureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNetworkStructure" />
+  </wsdl:message>
+  <wsdl:message name="GetNetworkStructureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNetworkStructureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NetworkMonitorSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNetworkStatus">
+      <wsdl:input message="tns:SetNetworkStatusSoapIn" />
+      <wsdl:output message="tns:SetNetworkStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStatus">
+      <wsdl:input message="tns:GetNetworkStatusSoapIn" />
+      <wsdl:output message="tns:GetNetworkStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStructure">
+      <wsdl:input message="tns:GetNetworkStructureSoapIn" />
+      <wsdl:output message="tns:GetNetworkStructureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetworkMonitorSoap" type="tns:NetworkMonitorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetworkStatus">
+      <soap:operation soapAction="http://tempuri.org/SetNetworkStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStatus">
+      <soap:operation soapAction="http://tempuri.org/GetNetworkStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStructure">
+      <soap:operation soapAction="http://tempuri.org/GetNetworkStructure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetworkMonitorSoap12" type="tns:NetworkMonitorSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetworkStatus">
+      <soap12:operation soapAction="http://tempuri.org/SetNetworkStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetNetworkStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNetworkStructure">
+      <soap12:operation soapAction="http://tempuri.org/GetNetworkStructure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NetworkMonitor">
+    <wsdl:port name="NetworkMonitorSoap" binding="tns:NetworkMonitorSoap">
+      <soap:address location="http://localhost:2459/UI_SystemStatus/NetworkMonitor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NetworkMonitorSoap12" binding="tns:NetworkMonitorSoap12">
+      <soap12:address location="http://localhost:2459/UI_SystemStatus/NetworkMonitor.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

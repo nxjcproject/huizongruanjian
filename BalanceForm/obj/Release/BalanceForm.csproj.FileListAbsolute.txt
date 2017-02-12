@@ -50,3 +50,6 @@ C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\bin\R
 C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\bin\Release\DataCompression.pdb
 C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\obj\Release\BalanceForm.FormMain.resources
 C:\工作\编程\恒拓软件\三层框架V3.1\huizongruanjian\BalanceForm\obj\Release\BalanceForm.TestSms.resources
+E:\git仓库\huizongruanjian\BalanceForm\bin\Release\BalanceForm.exe.config
+E:\git仓库\huizongruanjian\BalanceForm\obj\Release\BalanceForm.exe
+E:\git仓库\huizongruanjian\BalanceForm\obj\Release\BalanceForm.pdb
